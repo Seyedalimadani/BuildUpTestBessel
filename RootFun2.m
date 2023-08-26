@@ -1,11 +1,11 @@
-function [ANS]=RootFun(re,rw)
+function [ANS]=RootFun2(re,rw)
 reD=re/rw;      
 points=linspace(0,10000,1e6);
 N=length(points);
 ANS = zeros(N,1);
 for i=1:length(points)
     if points(i)~=0
-        ANS(i)=fzero(@(x)besselj(1,reD.*x).*bessely(1,x)-besselj(1,x).*bessely(1,reD.*x),points(i));
+        ANS(i)=fzero(@(x)besselj(1,x).*bessely(0,x.*reD)-besselj(0,x.*reD).*bessely(1,x),points(i));
     end
         if imag(ANS(i))~=0 ||isnan(ANS(i))
             ANS(i)=0;
