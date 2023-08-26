@@ -1,7 +1,7 @@
 function [ANS]=RootFun(re,rw)
 reD=re/rw;
 ANS = zeros(1000,1);      
-points=linspace(0,10,1000);
+points=linspace(0,100,10000);
 for i=1:length(points)
     if points(i)~=0
         ANS(i)=fzero(@(x)besselj(1,reD*x)*bessely(1,x)-besselj(1,x)*bessely(1,reD*x),points(i));
